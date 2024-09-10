@@ -1,0 +1,122 @@
+.spl_row-header {
+  color: rgb(255, 255, 255);
+  display: flex;
+  height: 40px;
+  margin-bottom: 8px;
+  padding: 0 5px;
+  background-color: rgb(4, 51, 98);
+}
+.spl_row {
+  background: #fff;
+  margin-bottom: 8px;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  color: #5d5d5d;
+  display: flex;
+  padding: 15px 5px;
+  position: relative;
+}
+.modal-header {
+  padding: 0.4rem 1rem;
+}
+.spl_grow {
+  display: flex;
+  flex-grow: 1;
+  min-width: 120px;
+  align-items: flex-start;
+  padding-left: 16px;
+  padding-right: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+.spl_70 {
+  width: 70px;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  font-family: Roboto Condensed, sans-serif;
+  letter-spacing: 0.02rem;
+  justify-content: center;
+}
+.spl_100 {
+  width: 100px;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  font-family: Roboto Condensed, sans-serif;
+  letter-spacing: 0.02rem;
+  justify-content: center;
+}
+.spl_130 {
+  width: 130px;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  font-family: Roboto Condensed, sans-serif;
+  letter-spacing: 0.02rem;
+  justify-content: center;
+}
+
+.spl_add-points-btn {
+  font-family: Roboto Condensed, sans-serif;
+  letter-spacing: 0.02rem;
+  padding: 5px 15px;
+  background: #eaeaea;
+  text-decoration: none;
+  color: #5d5d5d;
+}
+.spl_outcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  padding-top: 2px;
+}
+.spl_win {
+  border: 2px solid rgb(53, 163, 53);
+  color: rgb(53, 163, 53);
+}
+.spl_loss {
+  border: 2px solid rgb(163, 53, 53);
+  color: rgb(163, 53, 53);
+}
+.spl_tie {
+  border: 2px solid #5d5d5d;
+  color: #5d5d5d;
+}
+.spl_point-btn {
+  background-color: var(--spl-primary);
+}
+.spl_score-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  align-items: center;
+  border: 1px solid #ced4da;
+  padding: 25px 15px 15px 15px;
+  margin-bottom: 25px;
+  border-radius: 0.25rem;
+}
+.spl_score-container .spl_score {
+  display: grid;
+  justify-items: center;
+}
+.spl_score-container h3 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.spl_score-container p {
+  font-size: 1.4rem;
+  margin: 0;
+}
+@media (max-width: 599.95px) {
+  .spl_grow {
+    min-width: 100px;
+  }
+  .spl_130 {
+    width: 80px;
+  }
+}

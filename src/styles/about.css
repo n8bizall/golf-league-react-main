@@ -1,0 +1,40 @@
+.spl_history-row {
+  margin-top: 75px;
+}
+.spl_history-img-container {
+  display: flex;
+  justify-content: center;
+}
+.history-img {
+  transform: rotate(-3deg);
+  max-height: 500px;
+}
+.spl_champ-row {
+  margin: 100px 0;
+}
+.spl_champs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.spl_champs h5 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #5d5d5d;
+}
+.spl_champs h4 {
+  margin: 0;
+}
+.spl_champ-pending {
+  width: 200px;
+  background-color: #c5c5c5;
+  height: 200px;
+  border-radius: 40px;
+}
+.spl_champ-photo {
+  max-width: 200px;
+  background-color: #c5c5c5;
+  height: auto;
+  border-radius: 40px;
+}

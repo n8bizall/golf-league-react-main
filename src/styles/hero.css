@@ -1,0 +1,13 @@
+.spl_hero {
+  display: flex;
+  align-items: center;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/golf-dev-2471d.appspot.com/o/spl_hero_bkg_2.jpg?alt=media&token=b2c121be-a621-4e8e-8b73-a038f469f943");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
+.spl_hero h1 {
+  color: #ffffff;
+}

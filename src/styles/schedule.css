@@ -1,0 +1,36 @@
+.round-wrapper {
+  margin-top: 5px;
+}
+.schedule-header {
+  display: flex;
+  align-items: center;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+table thead {
+  color: rgb(255, 255, 255);
+  height: 40px;
+  margin-bottom: 8px;
+  padding: 0 5px;
+  background-color: rgb(4, 51, 98);
+}
+table thead tr th {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  border: 0;
+}
+table tbody tr {
+  padding: 15px 5px;
+  height: 40px;
+  background: #fff;
+}
+table tbody tr td {
+  font-size: 1rem;
+  color: #5d5d5d;
+  letter-spacing: 0.03rem;
+  border: 0;
+  padding: 10px 3px;
+}

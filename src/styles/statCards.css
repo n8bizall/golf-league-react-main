@@ -1,0 +1,26 @@
+.spl_stats-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin: 25px 0;
+}
+.spl_stat-card {
+  padding: 15px;
+  background: #fefefe;
+  border: 0px solid #eaeaea;
+  box-sizing: border-box;
+  border: 1px solid #eeeeee;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+.spl_stat-card p {
+  font-size: 1.3rem;
+  color: #5d5d5d;
+  margin-bottom: 0;
+}
+@media (max-width: 720px) {
+  .spl_stats-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}

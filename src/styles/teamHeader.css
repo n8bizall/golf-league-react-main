@@ -1,0 +1,24 @@
+.spl_team-header {
+  margin-top: 2rem;
+}
+.spl_header-left {
+  display: flex;
+  align-items: center;
+}
+.spl_team-image {
+  width: 75px;
+  height: 75px;
+  margin-right: 25px;
+  border-radius: 50%;
+  border: 4px solid var(--spl-primary);
+}
+.spl_team-name {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #b3b3b3;
+  margin: 0;
+}
+.spl_team-members {
+  font-size: 2.4rem;
+  margin: 0;
+}

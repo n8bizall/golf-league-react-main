@@ -1,52 +1,62 @@
-// Import the functions you need from the SDKs you need
+// Import the Firebase SDK
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore"; // Import Firestore
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "mock_key",
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+// Initialize Firebase services as variables (not exported yet)
+let auth, db, analytics, storage;
+
+// Function to fetch Firebase configuration from Cloud Function
+const fetchFirebaseConfig = async () => {
+  try {
+    const response = await fetch("<YOUR_CLOUD_FUNCTION_URL>"); // Replace with your Cloud Function URL
+    if (!response.ok) {
+      throw new Error("Failed to fetch Firebase config");
+    }
+    const firebaseConfig = await response.json();
+    return firebaseConfig;
+  } catch (error) {
+    console.error("Error fetching Firebase config:", error);
+    return null;
+  }
 };
 
-// Initialize Firebase
-console.log("Firebase Config:", {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-});
+// Initialize Firebase only after fetching config
+const initializeFirebase = async () => {
+  const firebaseConfig = await fetchFirebaseConfig();
+  if (firebaseConfig) {
+    // Initialize Firebase with the fetched configuration
+    const app = initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
+    // Initialize Firebase services
+    auth = getAuth(app); // Authentication
+    db = getFirestore(app); // Firestore
+    analytics = getAnalytics(app); // Analytics
+    storage = getStorage(app); // Storage
 
-// Initialize services
-export const auth = getAuth(app); // Authentication
-export const db = getFirestore(app); // Firestore
-export const analytics = getAnalytics(app); //Analytics
+    // Enable IndexedDB persistence for Firestore
+    enableIndexedDbPersistence(db).catch((err) => {
+      if (err.code === "failed-precondition") {
+        console.error(
+          "Multiple tabs open, persistence can only be enabled in one tab at a time."
+        );
+      } else if (err.code === "unimplemented") {
+        console.error(
+          "The current browser does not support offline persistence."
+        );
+      }
+    });
 
-export const storage = getStorage(app); // Storage (if you're using it)
-
-enableIndexedDbPersistence(db).catch((err) => {
-  if (err.code === "failed-precondition") {
-    console.error(
-      "Multiple tabs open, persistence can only be enabled in one tab at a time."
-    );
-  } else if (err.code === "unimplemented") {
-    console.error("The current browser does not support offline persistence.");
+    console.log("Firebase initialized successfully");
+  } else {
+    console.error("Failed to initialize Firebase");
   }
-});
+};
 
-export default app;
+// Call the function to initialize Firebase
+initializeFirebase();
+
+// Export Firebase services (exports are outside the function)
+export { auth, db, analytics, storage };

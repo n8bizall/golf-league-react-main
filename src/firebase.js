@@ -11,7 +11,9 @@ let auth, db, analytics, storage;
 // Function to fetch Firebase configuration from Cloud Function
 const fetchFirebaseConfig = async () => {
   try {
-    const response = await fetch("<YOUR_CLOUD_FUNCTION_URL>"); // Replace with your Cloud Function URL
+    const response = await fetch(
+      "https://us-central1-golfleague2025.cloudfunctions.net/getFirebaseConfig"
+    ); // Replace with your Cloud Function URL
     if (!response.ok) {
       throw new Error("Failed to fetch Firebase config");
     }
